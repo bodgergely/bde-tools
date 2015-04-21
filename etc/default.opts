@@ -109,8 +109,8 @@
 
 #===
 
-++  unix-*-*-*-gcc          _     DEF_CFLAGS          =  -pipe -std=gnu99
-++  unix-*-*-*-clang        _     DEF_CFLAGS          =  -pipe -std=gnu99
+++  unix-*-*-*-gcc          _     DEF_CFLAGS          =  -std=gnu99
+++  unix-*-*-*-clang        _     DEF_CFLAGS          =  -std=gnu99
 ++  unix-*                  _     DEF_CFLAGS          =  -I$(DEPLOYED_INCLUDE)
 
 # DRQS 57720228: switch to target=generic.
@@ -122,9 +122,9 @@
 # inline rather than inline and optimize
 !!  *                       _     CMP_TUNE            =
 !!  unix-*-*-*-gcc          _     CMP_TUNE            =  --param ggc-min-expand=30
-!!  unix-*-*-*-gcc          _     DEF_CXXFLAGS        =  -pipe $(CMP_TUNE)
-!!  unix-*-*-*-clang        _     DEF_CXXFLAGS        =  -pipe
-!!  unix-SunOS-*-*-gcc      _     DEF_CXXFLAGS        =  -pipe $(CMP_TUNE) -mcpu=niagara2
+!!  unix-*-*-*-gcc          _     DEF_CXXFLAGS        =  $(CMP_TUNE)
+!!  unix-*-*-*-clang        _     DEF_CXXFLAGS        =
+!!  unix-SunOS-*-*-gcc      _     DEF_CXXFLAGS        =  $(CMP_TUNE)
 
 # DRQS 29544311 - some .so's linking against BCE and BAE fail unless the sources are built
 # with -xthreadvar=dynamic
@@ -428,14 +428,14 @@ unix-*-*-*-gcc-4.2   _  GCCEXTRAWFLAGS  =   \
 ++  *                          _        CC64FLAGS                 =
 ++  *-*-x86_64-*-gcc           _        CC64FLAGS                 =  -m32
 !!  *-*-x86_64-*-gcc           64       CC64FLAGS                 =  -m64
-!!  *-*-x86_64-*-gcc           _        CC64FLAGS                 =  -m32 -march=pentium2 -mtune=opteron
-!!  *-*-x86_64-*-gcc           64       CC64FLAGS                 =  -m64 -mtune=opteron
+!!  *-*-x86_64-*-gcc           _        CC64FLAGS                 =  -m32
+!!  *-*-x86_64-*-gcc           64       CC64FLAGS                 =  -m64
 !!  *-*-ppc64-*-gcc            _        CC64FLAGS                 =  -m32 -mcpu=power7 -mhard-dfp
 !!  *-*-ppc64-*-gcc            64       CC64FLAGS                 =  -m64 -mcpu=power7 -mhard-dfp
 ++  *-*-*-*-clang              _        CC64FLAGS                 =  -m32
 !!  *-*-*-*-clang              64       CC64FLAGS                 =  -m64
-!!  *-*-x86_64-*-clang         _        CC64FLAGS                 =  -m32 -march=pentium2 -mtune=opteron
-!!  *-*-x86_64-*-clang         64       CC64FLAGS                 =  -m64 -mtune=opteron
+!!  *-*-x86_64-*-clang         _        CC64FLAGS                 =  -m32
+!!  *-*-x86_64-*-clang         64       CC64FLAGS                 =  -m64
 ++  unix-SunOS-*-*-gcc         _        CC64FLAGS                 =  -m32
 !!  unix-SunOS-*-*-gcc         64       CC64FLAGS                 =  -m64
 ++  unix-AIX-*-*-gcc           _        CC64FLAGS                 =  -maix32
